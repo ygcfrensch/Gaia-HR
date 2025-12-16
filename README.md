@@ -1,7 +1,7 @@
 # Gaia-HR
 Create HR diagrams from *Gaia* *G*, *G<sub>BP</sub>*, and *G<sub>RP</sub>* magnitudes.
 
-The code allows you to overplot your favorite targets to check whether they lie on the Main Sequence.
+The code allows you to overplot your favorite targets to check whether they lie on the main sequence.
 
 ## Installation & Requirements
 The following instructions will git clone the repository:
@@ -31,10 +31,11 @@ This code applies dereddening using the General Stellar Parametrizer from Photom
 - Local up to 100 pc (≥ 10 mas) is clean for most purposes.
 - Extended up to 200 pc (≥ 5 mas) gives a larger sample and allows you to see some evolved stars.
 - Beyond 200 pc, extinction corrections become important.
+
 Note: the code provides the option to skip dereddening.
 
 **Choosing the colormap** <br>
-By default, the colormap uses the GSP-Phot surface gravity (log g), as it helps distinguish MS and evolved stars and provides a rough indication of spectral type when other classifications are unavailable. Alternatively, the code allows color-coding stars by GSP-Phot metallicity ([M/H]).
+By default, the colormap uses the GSP-Phot surface gravity log $g$, as it helps distinguish main sequence and evolved stars and provides a rough indication of spectral type when other classifications are unavailable. Alternatively, the code allows color-coding stars by GSP-Phot metallicity [M/H].
 
 ## Credits
 If you use `Gaia-HR`, please give credit to this work:
