@@ -5,10 +5,20 @@ Create HR diagrams from *Gaia* *G*, *G<sub>BP</sub>*, and *G<sub>RP</sub> magnit
 
 ## Usage
 
-## Friendly suggestions
-### Choose your maximum distance carefully:
-- Up to 100 pc $(\geq 10~{\rm mas})$ is clean for most purposes.
-- Up to 200 pc $(\geq 5~{\rm mas})$ gives a larger sample and allows you to see some evolved stars.
+## Comments & Suggestions
+**Performed filtering**
+
+The *Gaia* magnitudes are filtered to include only the most reliable values. The following selection criteria are applied:
+- `ruwe < 1.4`<br>
+A value larger than 1.4 for the re-normalised unit weight error (RUWE) indicates a poor astrometric solution.
+- `parallax_over_error ≥ 10`<br>
+Ensures precise parallax measurements, corresponding to a distance uncertainty ≤ 10%.
+
+
+
+**Choose your maximum distance carefully:**
+- Local up to 100 pc $(\geq 10~{\rm mas})$ is clean for most purposes.
+- Extended up to 200 pc $(\geq 5~{\rm mas})$ gives a larger sample and allows you to see some evolved stars.
 - Beyond 200 pc, an extinction correction is necessary, which is not included in this code.
 
 ## Credits
