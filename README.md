@@ -1,2 +1,3 @@
 # Gaia-HR
-Create HR diagrams from Gaia G, GBP - GRP magnitudes.
+---
+Create HR diagrams from Gaia *G*, *G<sub>BP</sub>* - *G<sub>RP</sub> magnitudes.
