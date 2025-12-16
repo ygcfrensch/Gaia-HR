@@ -1,0 +1,5 @@
+numpy>=2.0
+pandas>=2.0
+matplotlib>=3.8
+astropy>=7.0
+astroquery>=0.4.9
