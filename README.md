@@ -26,10 +26,12 @@ A value larger than 1.4 for the re-normalised unit weight error (RUWE) indicates
 - `parallax_over_error ≥ 10`<br>
 Ensures precise parallax measurements, corresponding to a distance uncertainty ≤ 10%.
 
-**Choose your maximum distance carefully**
+**Choose your maximum distance carefully** <br>
+This code applies dereddening using the GSP-Phot parameters `ag_gspphot` and `ebpminrp_gspphot`. However, as these estimates are model-based, the corrections should be treated with caution, particularly for distant, faint, or crowded stars. 
 - Local up to 100 pc (≥ 10 mas) is clean for most purposes.
 - Extended up to 200 pc (≥ 5 mas) gives a larger sample and allows you to see some evolved stars.
-- Beyond 200 pc, an extinction correction is necessary, which is not included in this code.
+- Beyond 200 pc, extinction corrections become important.
+Note: the code provides the option to skip dereddening.
 
 **Choosing the colormap** <br>
 By default, the colormap uses the General Stellar Parametrizer from Photometry (GSP-Phot) surface gravity (log g), as it helps distinguish MS and evolved stars and provides a rough indication of spectral type when other classifications are unavailable. Alternatively, the code allows color-coding stars by GSP-Phot metallicity ([M/H]).
