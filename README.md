@@ -1,7 +1,7 @@
 # Gaia-HR
 Create HR diagrams from *Gaia* *G*, *G<sub>BP</sub>*, and *G<sub>RP</sub>* magnitudes.
 
-The code allows you to easily overplot your favorite targets to check whether they lie on the Main Sequence.
+The code allows you to overplot your favorite targets to check whether they lie on the Main Sequence.
 
 ## Installation & Requirements
 The following instructions will git clone the repository:
@@ -10,9 +10,7 @@ git clone https://github.com/ygcfrensch/Gaia-HR
 cd Gaia-HR
 ```
 
-The code requires `numpy`, `pandas`, `matplotlib`, `astropy`, and `astroquery`, which are widely used and may already be installed.  
-
-If not, or if you want to install in a separate environment (Python ≥ 3.10), you can run:
+The code requires `numpy`, `pandas`, `matplotlib`, `astropy`, and `astroquery`, which are widely used and may already be installed. If not, or if you want to install in a separate environment (Python ≥ 3.10), you can run:
 
 ```bash
 pip install -r requirements.txt
@@ -21,17 +19,20 @@ pip install -r requirements.txt
 ## Usage
 
 ## Comments & Suggestions
-**Performed filtering**<br>
+**Performed filtering** <br>
 The *Gaia* magnitudes are filtered to include only the most reliable values. The following selection criteria are applied:
 - `ruwe < 1.4`<br>
 A value larger than 1.4 for the re-normalised unit weight error (RUWE) indicates a poor astrometric solution.
 - `parallax_over_error ≥ 10`<br>
 Ensures precise parallax measurements, corresponding to a distance uncertainty ≤ 10%.
 
-**Choose your maximum distance carefully:**
+**Choose your maximum distance carefully**
 - Local up to 100 pc (≥ 10 mas) is clean for most purposes.
 - Extended up to 200 pc (≥ 5 mas) gives a larger sample and allows you to see some evolved stars.
 - Beyond 200 pc, an extinction correction is necessary, which is not included in this code.
+
+**Choosing the colormap** <br>
+By default, the colormap uses the General Stellar Parametrizer from Photometry (GSP-Phot) surface gravity (log g), as it helps distinguish MS and evolved stars and provides a rough indication of spectral type when other classifications are unavailable. Alternatively, the code allows color-coding stars by GSP-Phot metallicity ([M/H]).
 
 ## Credits
 If you use `Gaia-HR`, please give credit to this work:
