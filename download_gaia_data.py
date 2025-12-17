@@ -1,8 +1,11 @@
 import os
+import logging
 import numpy as np
 import pandas as pd
 from astroquery.gaia import Gaia
 from astropy.table import Table, vstack
+
+logging.getLogger("astroquery").setLevel(logging.ERROR)
 
 gaia_source='gaiadr3.gaia_source'
 max_download_distance=400
@@ -42,7 +45,7 @@ def download_gaia(gaia_source, max_download_distance=400, delete=False):
 	Potential reasons to run:
 	1. The data should include a larger distance (default max_download_distance=1000).
 	2. There has been a new Gaia Data Release.
-	3. gaiadr#_HR_parameters.rdb is corrupted (can also be downloaded from repo).	
+	3. gaiadr#_HR_parameters.rdb is corrupted.	
 	"""
 	file_hrdata = f"{gaia_source.split('.')[0]}_HR_parameters.rdb"
 	file_queries = f"{gaia_source.split('.')[0]}_queries.rdb"
