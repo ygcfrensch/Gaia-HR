@@ -16,7 +16,11 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-
+1. Download the necessary *Gaia* data. The script queries the *Gaia* archive in increasing volume steps and saves the results to a .fits file. Run:
+```bash
+python download_gaia_data.py
+```
+to query stars up to ~400 pc (~260 MB). You can adjust the maximum distance or select a different *Gaia* DR; use `-h` to see the available options. The download may take some time, but can run in parallel while you start creating your first HR plot.
 
 ## Comments & Suggestions
 **Performed filtering** <br>
