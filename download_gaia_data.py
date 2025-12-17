@@ -23,14 +23,6 @@ def query_gaia(parallax_filter, gaia_source):
     
 	print('Number of stars in query: %i \n'%(len(gtable['parallax'])))
 	return(gtable)
-	
-def save_results(all_res, file_hrdata):
-	"""
-	save_results(all_res)
-	all_res: table to save
-	"""
-# 	rdb_res = Table(all_res)
-	all_res.write(file_hrdata, overwrite=True) 
     
 # Download necessary HR diagram data
 def download_gaia(gaia_source, max_download_distance=1000, delete=False):
