@@ -17,6 +17,7 @@ pip install -r requirements.txt
 
 ## Usage
 
+
 ## Comments & Suggestions
 **Performed filtering** <br>
 The *Gaia* magnitudes are filtered to include only the most reliable values. The following selection criteria are applied:
