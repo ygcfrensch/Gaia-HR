@@ -52,7 +52,7 @@ def download_gaia(gaia_source='gaiadr3.gaia_source', max_download_distance=400, 
 	
 	# Create parallax array to query separately, to not overload the Gaia server
 	max_volume = max_download_distance**3
-	volume_step = 4000000 # This should give around ~1 million stars in the first query
+	volume_step = 4500000 # This should give around ~700.000 stars in the first query
 	volumes = np.arange(0, max_volume+volume_step, volume_step)[1:] # Minimum volume download is at least ~160 pc
 	distances = volumes**(1/3)
 	par = 1e3/distances # in mas
