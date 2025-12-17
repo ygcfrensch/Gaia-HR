@@ -1,9 +1,11 @@
 import os
 import numpy as np
+import pandas as pd
 from astroquery.gaia import Gaia
-from astropy.table import Table
+from astropy.table import Table, vstack
 
 gaia_source='gaiadr3.gaia_source'
+max_download_distance=1000
 
 # Query Gaia for wanted parameters
 def query_gaia(parallax_filter, gaia_source):
@@ -19,53 +21,77 @@ def query_gaia(parallax_filter, gaia_source):
 	job = Gaia.launch_job_async(job_description)
 	gtable = job.get_results()
     
-    new_dict = {}
-    for ky in gtable.keys():
-    	new_dict[ky] = gtable[ky].value
-	print('Number of stars in query: %i \n'%(len(new_dict['parallax'])))
+	print('Number of stars in query: %i \n'%(len(gtable['parallax'])))
 	return(gtable)
 	
-def save_results(all_res):
+def save_results(all_res, file_hrdata):
 	"""
 	save_results(all_res)
 	all_res: table to save
 	"""
-	rdb_res = Table(all_res)
-	rdb_res.write('%s_HR_parameters.rdb'%(gaia_source.split('.')[0]), overwrite=True) 
+# 	rdb_res = Table(all_res)
+	all_res.write(file_hrdata, overwrite=True) 
     
 # Download necessary HR diagram data
 def download_gaia(gaia_source, max_download_distance=1000, delete=False):
 	"""
 	download_gaia(gaia_source, max_download_distance=1000, delete=False)
 	
-	Downloads the necessary data into 'gaiadr#_HR_parameters.rdb'.
+	Downloads the necessary data into 'gaiadr#_HR_parameters.rdb'. 
+	The data is downloaded in steps of volume, ensuring that the max_download_distance is included.
+	The minimum volume downloaded starts at a distance of ~160 pc.
+	If max_download_distance is increased, it will add to the already existing file.
+	Queries are saved in steps to ensure no data loss. 
+	
 	gaia_source = 'gaiadr3.gaia_source'
 	max_download_distance = 1000 (pc)
-	delete: If true it deletes the existing data file
+	delete: if True it deletes the existing data file
 	
 	Potential reasons to run:
-	1. The data should include a larger distance (default dmax=1000).
+	1. The data should include a larger distance (default max_download_distance=1000).
 	2. There has been a new Gaia Data Release.
-	3. gaiadr#_HR_parameters.rdb is corrupted (can instead be downloaded from repo).	
+	3. gaiadr#_HR_parameters.rdb is corrupted (can also be downloaded from repo).	
 	"""
-	# Separate queries to not overload Gaia server
-	dist = ((max_download_distance**3 * np.linspace(0, 1, int((max_download_distance**3)/4e6)))**(1/3))[1:]
-	par = 1e3/dist # in mas
-
-	# First smallest distances
-	parallax_filter = f"parallax>={par[0]}"
-	all_res = query_gaia(parallax_filter, gaia_source)
-	save_results(all_res, done_queries)
+	file_hrdata = f"{gaia_source.split('.')[0]}_HR_parameters.rdb"
+	file_queries = f"{gaia_source.split('.')[0]}_queries.rdb"
 	
-	# Then loop over the rest
-	for p1, p2 in zip(par[1:], par[:-1]):
-		parallax_filter = f"parallax>={p1} AND parallax<{p2}"
-		res = query_gaia(parallax_filter, gaia_source)
-		for ky in all_res.keys():
-			all_res[ky] = np.append(all_res[ky], res[ky])
-		save_results(all_res, done_queries)	
-
+	if delete:
+		os.remove(file_hrdata)
+		os.remove(file_queries)
+	
+	# Create parallax array to query separately, to not overload the Gaia server
+	Vmax = max_download_distance**3
+	Vstep = 4000000 # This should give around ~1 million stars in the first query
+	V = np.arange(0, Vmax+Vstep, Vstep)[1:]
+	dist = V**(1/3)
+	par = 1e3/dist # in mas
+	
+	# Check if the query was already performed
+	queries = []
+	if os.path.exists(file_queries):
+		queries = pd.read_table(file_queries, header=None).to_numpy()
+	
+	with open(file_queries, "a") as f:
+		# First the smallest distances
+		parallax_filter = f"parallax>={par[0]}"
+		if parallax_filter not in queries:
+			all_res = query_gaia(parallax_filter, gaia_source)
+			all_res.write(file_hrdata, overwrite=True) 
+			
+			f.write(parallax_filter + "\n")
+		else:
+			all_res = Table.read(file_hrdata)
+		
+		# Then loop over the rest up to approx. max_download_distance
+		for p1, p2 in zip(par[1:], par[:-1]):
+			parallax_filter = f"parallax>={p1} AND parallax<{p2}"
+			if parallax_filter not in queries:
+				res = query_gaia(parallax_filter, gaia_source)
+				
+				all_res = vstack([all_res, res])
+				all_res.write(file_hrdata, overwrite=True) 
+				
+				f.write(parallax_filter + "\n")
+				
 # Download Gaia data in case the .rdb file does not exist
-file_hrdata = gaia_source.split('.')[0]
-if not os.path.exists(file_hrdata):
-	query_gaia(gaia_source)
+download_gaia(gaia_source, max_download_distance)
