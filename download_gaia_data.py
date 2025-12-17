@@ -7,9 +7,6 @@ from astropy.table import Table, vstack
 
 logging.getLogger("astroquery").setLevel(logging.ERROR)
 
-gaia_source='gaiadr3.gaia_source'
-max_download_distance=400
-
 # Query Gaia for wanted parameters
 def query_gaia(parallax_filter, gaia_source):
 	"""
@@ -28,7 +25,7 @@ def query_gaia(parallax_filter, gaia_source):
 	return(gtable)
     
 # Download necessary HR diagram data
-def download_gaia(gaia_source, max_download_distance=400, delete=False):
+def download_gaia(gaia_source='gaiadr3.gaia_source', max_download_distance=400, delete=False):
 	"""
 	download_gaia(gaia_source, max_download_distance=400, delete=False)
 	
@@ -47,8 +44,11 @@ def download_gaia(gaia_source, max_download_distance=400, delete=False):
 	2. There has been a new Gaia Data Release.
 	3. gaiadr#_HR_parameters.rdb is corrupted.	
 	"""
-	file_hrdata = f"{gaia_source.split('.')[0]}_HR_parameters.rdb"
-	file_queries = f"{gaia_source.split('.')[0]}_queries.rdb"
+	if not os.path.isdir('data/'):
+		os.mkdir('data/')
+	
+	file_hrdata = f"data/{gaia_source.split('.')[0]}_HR_parameters.rdb"
+	file_queries = f"data/{gaia_source.split('.')[0]}_queries.rdb"
 	
 	if delete:
 		os.remove(file_hrdata)
@@ -89,4 +89,4 @@ def download_gaia(gaia_source, max_download_distance=400, delete=False):
 				f.write(parallax_filter + "\n")
 				
 # Download Gaia data in case the .rdb file does not exist
-download_gaia(gaia_source, max_download_distance)
+download_gaia()
