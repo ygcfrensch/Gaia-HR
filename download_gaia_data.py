@@ -5,7 +5,7 @@ from astroquery.gaia import Gaia
 from astropy.table import Table, vstack
 
 gaia_source='gaiadr3.gaia_source'
-max_download_distance=1000
+max_download_distance=400
 
 # Query Gaia for wanted parameters
 def query_gaia(parallax_filter, gaia_source):
@@ -25,9 +25,9 @@ def query_gaia(parallax_filter, gaia_source):
 	return(gtable)
     
 # Download necessary HR diagram data
-def download_gaia(gaia_source, max_download_distance=1000, delete=False):
+def download_gaia(gaia_source, max_download_distance=400, delete=False):
 	"""
-	download_gaia(gaia_source, max_download_distance=1000, delete=False)
+	download_gaia(gaia_source, max_download_distance=400, delete=False)
 	
 	Downloads the necessary data into 'gaiadr#_HR_parameters.rdb'. 
 	The data is downloaded in steps of volume, ensuring that the max_download_distance is included.
@@ -36,7 +36,7 @@ def download_gaia(gaia_source, max_download_distance=1000, delete=False):
 	Queries are saved in steps to ensure no data loss. 
 	
 	gaia_source = 'gaiadr3.gaia_source'
-	max_download_distance = 1000 (pc)
+	max_download_distance = 400 (pc)
 	delete: if True it deletes the existing data file
 	
 	Potential reasons to run:
