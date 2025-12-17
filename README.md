@@ -1,17 +1,16 @@
 # Gaia-HR
 Create HR diagrams from *Gaia* *G*, *G<sub>BP</sub>*, and *G<sub>RP</sub>* magnitudes.
 
-The code allows you to overplot your favorite targets to check whether they lie on the main sequence.
+The code allows you to overplot your favorite targets to check whether they lie on the main sequence and provides an estimate of their effective temperatures.
 
-## Installation & Requirements
-The following instructions will git clone the repository:
+## Installation
+To clone the repo from GitHub:
 ```bash
 git clone https://github.com/ygcfrensch/Gaia-HR
 cd Gaia-HR
 ```
 
-The code requires `numpy`, `pandas`, `matplotlib`, `astropy`, and `astroquery`, which are widely used and may already be installed. If not, or if you want to install in a separate environment (Python ≥ 3.10), you can run:
-
+The code uses `numpy`, `pandas`, `matplotlib`, `astropy`, and `astroquery`. If they’re not installed, or if you prefer a separate environment (Python ≥ 3.10), run:
 ```bash
 pip install -r requirements.txt
 ```
@@ -38,7 +37,7 @@ Note: the code provides the option to skip dereddening.
 By default, the colormap uses the GSP-Phot surface gravity log $g$, as it helps distinguish main sequence and evolved stars and provides a rough indication of spectral type when other classifications are unavailable. Alternatively, the code allows color-coding stars by GSP-Phot metallicity [M/H].
 
 ## Credits
-If you use `Gaia-HR`, please give credit to this work:
+Please include the following citation if you use `Gaia-HR` in your work or research:
 ```
 @ARTICLE{2025A&A...700A.118F,
        author = {{Frensch}, Y.~G.~C. and {Bouchy}, F. and {Lo Curto}, G. and {Ulmer-Moll}, S. and {Sousa}, S.~G. and {Santos}, N.~C. and {Stassun}, K.~G. and {Watkins}, C.~N. and {Chakraborty}, H. and {Barkaoui}, K. and {Battley}, M. and {Ceva}, W. and {Collins}, K.~A. and {Daylan}, T. and {Evans}, P. and {Faria}, J.~P. and {Farret Jentink}, C. and {Fontanet}, E. and {Frid{\'e}n}, E. and {Furesz}, G. and {Gillon}, M. and {Grieves}, N. and {Hellier}, C. and {Jehin}, E. and {Jenkins}, J.~M. and {Kwok}, L.~K.~W. and {Latham}, D.~W. and {Lavie}, B. and {Law}, N. and {Mann}, A.~W. and {Murgas}, F. and {Palle}, E. and {Parc}, L. and {Pepe}, F. and {Popowicz}, A. and {Pozuelos}, F.~J. and {Radford}, D.~J. and {Relles}, H.~M. and {Revol}, A. and {Ricker}, G. and {Seager}, S. and {Shinde}, M. and {Steiner}, M. and {Strakhov}, I.~A. and {Tan}, T.-G. and {Tavella}, S. and {Timmermans}, M. and {Tofflemire}, B. and {Udry}, S. and {Vanderspek}, R. and {Vaulato}, V. and {Winn}, J.~N. and {Ziegler}, C.},
@@ -59,7 +58,9 @@ archivePrefix = {arXiv},
 }
 ```
 
-and add the following sentence within the acknowledgements section:
+and add this line where relevant:
 > This work made use of \texttt{Gaia-HR} (\url{https://github.com/ygcfrensch/Gaia-HR}).
 
-Please also give credit to *Gaia* Data Release 3 ([Gaia Collaboration et al. 2023](https://ui.adsabs.harvard.edu/abs/2023A%26A...674A...1G/abstract)).
+`Gaia-HR` builds on the following works, please cite them too:
+- *Gaia* DR3 ([Gaia Collaboration et al. 2023](https://ui.adsabs.harvard.edu/abs/2023A%26A...674A...1G/abstract))
+- *Gaia* GSP-Phot ([R. Andrae et al. 2023](https://www.aanda.org/articles/aa/full_html/2023/06/aa43462-22/aa43462-22.html))
