@@ -16,11 +16,10 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-1. Download the necessary *Gaia* data. The script queries the *Gaia* archive in increasing volume steps and saves the results to a .fits file. Run:
-```bash
-python download_gaia_data.py
-```
-to query stars up to ~400 pc (~260 MB). You can adjust the maximum distance or select a different *Gaia* DR; use `-h` to see the available options. The download may take some time, but can run in parallel while you start creating your first HR plot.
+The Jupyter notebook `Gaia-HR_Figure.ipynb` provides a step-by-step example of how to generate an HR diagram with this code.
+
+<img width="2159" height="1749" alt="HR_diagram_example" src="https://github.com/user-attachments/assets/407cd62f-e66a-4940-a987-592cee6f7b36" />
+
 
 ## Comments & Suggestions
 **Performed filtering** <br>
@@ -44,21 +43,20 @@ By default, the colormap uses the GSP-Phot surface gravity log $g$, as it helps 
 ## Credits
 Please include the following citation if you use `Gaia-HR` in your work or research:
 ```
-@ARTICLE{2025A&A...700A.118F,
-       author = {{Frensch}, Y.~G.~C. and {Bouchy}, F. and {Lo Curto}, G. and {Ulmer-Moll}, S. and {Sousa}, S.~G. and {Santos}, N.~C. and {Stassun}, K.~G. and {Watkins}, C.~N. and {Chakraborty}, H. and {Barkaoui}, K. and {Battley}, M. and {Ceva}, W. and {Collins}, K.~A. and {Daylan}, T. and {Evans}, P. and {Faria}, J.~P. and {Farret Jentink}, C. and {Fontanet}, E. and {Frid{\'e}n}, E. and {Furesz}, G. and {Gillon}, M. and {Grieves}, N. and {Hellier}, C. and {Jehin}, E. and {Jenkins}, J.~M. and {Kwok}, L.~K.~W. and {Latham}, D.~W. and {Lavie}, B. and {Law}, N. and {Mann}, A.~W. and {Murgas}, F. and {Palle}, E. and {Parc}, L. and {Pepe}, F. and {Popowicz}, A. and {Pozuelos}, F.~J. and {Radford}, D.~J. and {Relles}, H.~M. and {Revol}, A. and {Ricker}, G. and {Seager}, S. and {Shinde}, M. and {Steiner}, M. and {Strakhov}, I.~A. and {Tan}, T.-G. and {Tavella}, S. and {Timmermans}, M. and {Tofflemire}, B. and {Udry}, S. and {Vanderspek}, R. and {Vaulato}, V. and {Winn}, J.~N. and {Ziegler}, C.},
-        title = "{Three hot Jupiters transiting K-dwarfs with significant heavy element masses}",
-      journal = {\aap},
-     keywords = {techniques: photometric, techniques: radial velocities, planets and satellites: general, stars: individual: TOI-2969, stars: individual: TOI-2989, stars: individual: TOI-5300, Earth and Planetary Astrophysics},
+@ARTICLE{2025arXiv251011703F,
+       author = {{Frensch}, Yolanda G.~C. and {Bouchy}, Fran{\c{c}}ois and {Lo Curto}, Gaspare and {L'Heureux}, Alexandrine and {de Lima Gomes}, Roseane and {Faria}, Jo{\~a}o and {Dumusque}, Xavier and {Malo}, Lison and {Cointepas}, Marion and {Srivastava}, Avidaan and {Bonfils}, Xavier and {Delgado-Mena}, Elisa and {Nari}, Nicola and {Al Moulla}, Khaled and {Allart}, Romain and {Almenara}, Jose M. and {Artigau}, {\'E}tienne and {Barkaoui}, Khalid and {Baron}, Fr{\'e}d{\'e}rique and {Barros}, Susana C.~C. and {Benneke}, Bj{\"o}rn and {Bryan}, Marta and {Cadieux}, Charles and {Canto Martins}, Bruno L. and {de Castro Le{\~a}o}, Izan and {Castro-Gonz{\'a}lez}, Amadeo and {Cloutier}, Ryan and {Collins}, Karen A. and {Cowan}, Nicolas B. and {Cristo}, Eduardo and {De Medeiros}, Jose R. and {Delfosse}, Xavier and {Doyon}, Ren{\'e} and {Ehrenreich}, David and {Fajardo-Acosta}, Sergio B. and {Forveille}, Thierry and {Gan}, Tianjun and {Gomes da Silva}, Jo{\~a}o and {Gonz{\'a}lez Hern{\'a}ndez}, Jonay I. and {Grieves}, Nolan and {Howell}, Steve and {Lafreni{\`e}re}, David and {Lovis}, Christophe and {Melo}, Claudio and {Messamah}, Lina and {Mignon}, Lucile and {Mordasini}, Christoph and {Nielsen}, Louise D. and {Osborn}, Ares and {Parc}, L{\'e}na and {Pepe}, Francesco and {Piaulet-Ghorayeb}, Caroline and {Rebolo}, Rafael and {Rowe}, Jason and {Santos}, Nuno C. and {S{\'e}gransan}, Damien and {Stassun}, Keivan G. and {Striegel}, Stephanie and {Su{\'a}rez Mascare{\~n}o}, Alejandro and {Udry}, St{\'e}phane and {Ulmer-Moll}, Sol{\`e}ne and {Valencia}, Diana and {Vaulato}, Valentina and {Wade}, Gregg and {Watkins}, Cristilyn N.},
+        title = "{TOI-3288 b and TOI-4666 b: two gas giants transiting low-mass stars characterised by NIRPS}",
+      journal = {arXiv e-prints},
+     keywords = {Earth and Planetary Astrophysics},
          year = 2025,
-        month = aug,
-       volume = {700},
-          eid = {A118},
-        pages = {A118},
-          doi = {10.1051/0004-6361/202553879},
+        month = oct,
+          eid = {arXiv:2510.11703},
+        pages = {arXiv:2510.11703},
+          doi = {10.48550/arXiv.2510.11703},
 archivePrefix = {arXiv},
-       eprint = {2506.04923},
+       eprint = {2510.11703},
  primaryClass = {astro-ph.EP},
-       adsurl = {https://ui.adsabs.harvard.edu/abs/2025A&A...700A.118F},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2025arXiv251011703F},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 ```
