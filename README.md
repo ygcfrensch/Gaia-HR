@@ -19,9 +19,11 @@ pip install -r requirements.txt
 The Jupyter notebook `Gaia-HR_Figure.ipynb` provides a step-by-step example of how to generate an HR diagram with this code.
 
 <div style="display:flex; gap:10px;">
-<img width=48.19%; alt="HR_diagram_example_1" src="https://github.com/user-attachments/assets/1542cfd8-3407-424b-a0ab-b3892612675a" />
-<img width=47.81%; alt="HR_diagram_example_2" src="https://github.com/user-attachments/assets/ad6b7b6a-2fb9-43e9-b68b-30d1ac8bc79c" />
+       <img width=48.19%; alt="HR_diagram_example_1" src="https://github.com/user-attachments/assets/b19c129c-dabb-410a-b4ff-47c984a72560" />
+       <img width=47.81%; alt="HR_diagram_example_2" src="https://github.com/user-attachments/assets/cec5ae8f-9253-4035-8994-443c2a1ea78b" />
 </div>
+
+
 
 ## Comments & Suggestions
 **Performed filtering** <br>
